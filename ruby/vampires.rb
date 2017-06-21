@@ -26,12 +26,12 @@ end
 
 if name == "Drake Cula" || name == "Tu Fang"
   puts "Definitely a vampire."
-elsif age_test_passed && garlic_test_passed && insurance_test_passed
-  puts "Probably not a vampire."
 elsif !age_test_passed && !garlic_test_passed && !insurance_test_passed
   puts "Almost certainly a vampire."
 elsif !age_test_passed && (!garlic_test_passed || !insurance_test_passed)
   puts "Probably a vampire."
+elsif age_test_passed && garlic_test_passed && insurance_test_passed
+  puts "Probably not a vampire."
 else
   puts "Results inconclusive."
 end
