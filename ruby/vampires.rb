@@ -12,7 +12,7 @@ garlic_bread = gets.chomp
 puts "Enroll in health insurance? (y/n)"
 insurance = gets.chomp
 
-if age != true_age
+if age == true_age
   age_test_passed = true
 end
 
@@ -26,7 +26,9 @@ end
 
 if age_test_passed && garlic_test_passed && insurance_test_passed
   puts "Probably not a vampire."
-elsif !age_test_passed && (!garlic_test_passed || !insurance_test_passed)
+elsif !age_test_passed && !garlic_test_passed && !insurance_test_passed
+  puts "Almost certainly a vampire."
+elsif !age_test_passed && !(garlic_test_passed || insurance_test_passed)
   puts "Probably a vampire."
 elsif name == "Drake Cula" || name == "Tu Fang"
   puts "Definitely a vampire."
