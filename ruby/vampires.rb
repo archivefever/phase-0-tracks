@@ -16,19 +16,31 @@ until count == 0
   puts "Enroll in health insurance? (y/n)"
   insurance = gets.chomp
 
+  puts "Please name any allergies (enter 'done' when finished):"
+  while user_input = gets.chomp
+    case user_input
+    when "done"
+      allergy_test_passed = true
+      break
+    when "sunshine"
+      allergy_test_passed = false
+      break
+    end
+  end
+
   if age == true_age
     age_test_passed = true
   end
-
   if garlic_bread == "y"
     garlic_test_passed = true
   end
-
   if insurance == "y"
     insurance_test_passed = true
   end
 
-  if name == "Drake Cula" || name == "Tu Fang"
+  if !allergy_test_passed
+    puts "Probably a vampire."
+  elsif name == "Drake Cula" || name == "Tu Fang"
     puts "Definitely a vampire."
   elsif !age_test_passed && !garlic_test_passed && !insurance_test_passed
     puts "Almost certainly a vampire."
