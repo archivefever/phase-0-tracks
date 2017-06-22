@@ -54,3 +54,5 @@ until count == 0
 
   count -= 1
 end
+
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
