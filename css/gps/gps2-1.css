@@ -1,1 +1,36 @@
-* { outline: 1px solid red; }
+body {
+  background-color: ivory;
+    font-family: Helvetica;
+}
+
+header {
+  background-color: lightblue;
+  color: red ;
+  border: 1px solid black;
+  padding: 25px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  color: gray;
+  font-size: 1.5em;
+}
+
+article {
+  border: 1px dashed black;
+  padding: 10px;
+  margin: 20px;
+}
+
+details {
+  background-color:lightgray;
+}
+
+section {
+  display: inline-block;
+  vertical-align: top;
+  width:45%;
+}
