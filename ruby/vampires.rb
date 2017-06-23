@@ -1,3 +1,5 @@
+#Clint Thacker
+#CHI Nighhawks
 #Vampire Detection program
 
 puts "Number of employees to be processed:"
@@ -13,7 +15,7 @@ until count == 0
   true_age = 2017 - birth_year
   puts "Enjoy some delicious garlic bread? (y/n)"
   garlic_bread = gets.chomp
-  puts "Enroll in health insurance? (y/n)"
+  puts "Enroll in our mortal health insurance plan? (y/n)"
   insurance = gets.chomp
 
   puts "Please name any allergies (enter 'done' when finished):"
@@ -27,16 +29,27 @@ until count == 0
       break
     end
   end
+  puts
 
   if age == true_age
     age_test_passed = true
+  else
+    age_test_passed = false
   end
-  if garlic_bread == "y"
+
+  if garlic_bread == "y" || garlic_bread == "yes"
     garlic_test_passed = true
+  else
+    garlic_test_passed = false
   end
-  if insurance == "y"
+
+  if insurance == "y" || insurance == "yes"
     insurance_test_passed = true
+  else
+    insurance_test_passed = false
   end
+
+print "RESULT: "
 
   if !allergy_test_passed
     puts "Probably a vampire."
@@ -51,7 +64,7 @@ until count == 0
   else
     puts "Results inconclusive."
   end
-
+  puts
   count -= 1
 end
 
