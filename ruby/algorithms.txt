@@ -1,0 +1,27 @@
+
+Robot-Elevator Algorithm
+
+Assuming the elevator is able to identify the Floor 1 button as a starting point and evaluate buttons in its line of sight to an integer…
+
+(In this algorithm, a variable would be subtracted from and evaluated on each row as the left/right switch, calibrating from the right movement on the first floor.)
+
+Until robot line of sight (RLOS) evaluates button to desired floor integer:
+  -- Until there are no buttons in RLOS
+    -- Move R/L (using an even/odd switch) horizontally
+    -- If RLOS evaluates to desired floor integer, press button (BREAK)
+  -- Move RLOS up one row
+  -- Variable is updated (by adding 1)
+
+-----------------------
+
+Water Plant Algorithm
+
+-- Check soil
+-- if soil is dry continue, otherwise stop
+  -- go to watering can
+  -- until watering can is full
+    -- fill watering can
+  -- take watering can to plant
+  -- until soil is moist
+    -- pour water into plant
+
