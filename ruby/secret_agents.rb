@@ -9,6 +9,7 @@ def encrypt(str)
   # declare an empty string we will add to
   result = ""
   # loop over the string's letters, accounting for spaces and edge cases, and return the next letter in alphabetic order.
+  # the method used below in the decryption method would account for edge cases without the additional conditional logic, but I kept the logic here to be consistent with the directions of the assignment.
   while index < str.length
     if str[index] == " "
       result += " "
@@ -36,6 +37,7 @@ def decrypt(str)
   result = ""
   alpha = "abcdefghijklmnopqrstuvwxyz"
   #loop over the string's characters one at a time, accounting for spaces, identify the character's location in the alphabet string, and returning previous character in the alpha string
+  # this method accounts handles edge cases
   while index < str.length
     if str[index] == " "
       result += " "
