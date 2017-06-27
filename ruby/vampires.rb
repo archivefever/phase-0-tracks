@@ -12,42 +12,24 @@ until count == 0
   age = gets.chomp.to_i
   puts "Birth year:"
   birth_year = gets.chomp.to_i
-  true_age = 2017 - birth_year
+  true_age = Time.now.year - birth_year
   puts "Enjoy some delicious garlic bread? (y/n)"
   garlic_bread = gets.chomp
   puts "Enroll in our mortal health insurance plan? (y/n)"
   insurance = gets.chomp
 
   puts "Please name any allergies (enter 'done' when finished):"
-  while user_input = gets.chomp
-    case user_input
-    when "done"
-      allergy_test_passed = true
-      break
-    when "sunshine"
-      allergy_test_passed = false
-      break
-    end
+  allergy_input = ""
+  until allergy_input == "done" || allergy_input == "sunshine"
+    allergy_input = gets.chomp
+    allergy_test_passed = allergy_input != "sunshine"
   end
+
   puts
 
-  if age == true_age
-    age_test_passed = true
-  else
-    age_test_passed = false
-  end
-
-  if garlic_bread == "y" || garlic_bread == "yes"
-    garlic_test_passed = true
-  else
-    garlic_test_passed = false
-  end
-
-  if insurance == "y" || insurance == "yes"
-    insurance_test_passed = true
-  else
-    insurance_test_passed = false
-  end
+  age_test_passed = age == true_age
+  garlic_test_passed = (garlic_bread == "y" || garlic_bread == "yes")
+  insurance_test_passed = (insurance == "y" || insurance == "yes")
 
 print "RESULT: "
 
