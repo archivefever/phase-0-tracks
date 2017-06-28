@@ -25,46 +25,67 @@ Edge cases?
 
 =end
 
+def spy_interface
 
 
-def alias_generator(name)
+  def alias_generator(name)
 
-  # define method for encoding strings
-  def encoder(split_name)
-    # intialize variables
-    alpha = ('a'..'z').to_a
-    vowels = ["a", "e", "i", "o", "u"]
-    consonants = alpha - vowels
-    result = ""
+    # define method for encoding strings
+    def encoder(split_name)
+      # intialize variables
+      alpha = ('a'..'z').to_a
+      vowels = ["a", "e", "i", "o", "u"]
+      consonants = alpha - vowels
+      result = ""
 
-    # loop through array, shifting vowels and consonants
-    split_name.map! do |character|
-      if vowels.include?(character)
-        if character == "u"
-          result += "a"
+      # loop through array, shifting vowels and consonants
+      split_name.map! do |character|
+        if vowels.include?(character)
+          if character == "u"
+            result += "a"
+          else
+            result += vowels[vowels.index(character) + 1]
+          end
         else
-          result += vowels[vowels.index(character) + 1]
-        end
-      else
-        if character == "z"
-          result += "b"
-        else
-          result += consonants[consonants.index(character) + 1]
+          if character == "z"
+            result += "b"
+          else
+            result += consonants[consonants.index(character) + 1]
+          end
         end
       end
+      # method will evaluate as encoded string
+      result
     end
-    # method will evaluate as encoded string
-    result
+
+    # Split name into two arrays of individual lower-case characters
+    # Reverse order of first and last names
+    first_code_name = name.downcase.split(' ')[1].split('')
+    last_code_name = name.downcase.split(' ')[0].split('')
+
+    # Method evaluates to capitalized string names
+    encoder(first_code_name).capitalize + " " + encoder(last_code_name).  capitalize
   end
 
-  # Split name into two arrays of individual lower-case characters
-  # Reverse order of first and last names
-  first_code_name = name.downcase.split(' ')[1].split('')
-  last_code_name = name.downcase.split(' ')[0].split('')
+  # DRIVER CODE
 
-  # Method evaluates to capitalized string names
-  encoder(first_code_name).capitalize + " " + encoder(last_code_name).capitalize
+  prompt = ">"
+  spy_input = ""
+
+  puts "Please enter names to be encoded (type 'quit' when finished):"
+
+  while spy_input != "quit"
+      print prompt
+      spy_input = gets.chomp
+      if spy_input != "quit"
+        if !spy_input.empty?
+          puts alias_generator(spy_input)
+        end
+      end
+  end
 
 end
 
-p alias_generator("Felicia Torres")
+
+spy_interface
+
