@@ -72,6 +72,9 @@ def spy_interface
   prompt = ">"
   spy_input = ""
 
+  true_name_array = []
+  spy_name_array = []
+
   puts "Please enter names to be encoded (type 'quit' when finished):"
 
   while spy_input != "quit"
@@ -79,10 +82,15 @@ def spy_interface
       spy_input = gets.chomp
       if spy_input != "quit"
         if !spy_input.empty?
-          puts alias_generator(spy_input)
+          puts new_spy_name = alias_generator(spy_input)
+          true_name_array << spy_input
+          spy_name_array << new_spy_name
         end
       end
   end
+
+  true_name_array.zip(spy_name_array).each { |true_name, spy_name| puts "#{true_name} is also known as #{spy_name}." }
+
 
 end
 
