@@ -7,19 +7,57 @@ zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars",
 # printing each item in the array separated by an asterisk
 # ----
 
+zombie_apocalypse_supplies.each { |supply| print supply + "*"}
+
+
 # 2. In order to keep yourself organized, sort your zombie_apocalypse_supplies
 # in alphabetical order. Do not use any special built-in methods.
 # ----
+
+zombie_apocalypse_supplies.each do |supply|
+
+if zombie_apocalypse_supplies[supply]
+
+end
+
+
 
 # 3. Create a method to see if a particular item (string) is in the
 # zombie_apocalypse_supplies. Do not use any special built-in methods.
 # For instance: are boots in your list of supplies?
 # ----
+def on_list(search_item)
+
+  zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars",
+                              "shotgun", "compass", "CB radio", "batteries"]
+  item_included = false
+
+  zombie_apocalypse_supplies.each do |supply|
+  if supply == search_item
+    item_included = true
+  end
+  end
+
+  return item_included
+
+end
+
+p on_list("water jug")
+p on_list("compass")
+p on_list("hamburger")
 
 # 4. You can't carry too many things, you've only got room in your pack for 5.
 # Remove items in your zombie_apocalypse_supplies in any way you'd like,
 # leaving only 5. Do not use any special built-in methods.
 # ----
+
+zombie_apocalypse_supplies.each do
+  if zombie_apocalypse_supplies.length > 5
+    zombie_apocalypse_supplies.delete_at(zombie_apocalypse_supplies.length - 1)
+  end
+end
+
+
 
 # 5. You found another survivor! This means you can combine your supplies.
 # Create a new combined supplies list out of your zombie_apocalypse_supplies
@@ -29,6 +67,10 @@ zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars",
 other_survivor_supplies = [ "warm clothes", "rations", "compass", "camp stove",
                             "solar battery", "flashlight"]
 # ----
+
+combined_supplies_list = (zombie_apocalypse_supplies + other_survivor_supplies).uniq
+
+p combined_supplies_list
 
 # Hash Drills
 
@@ -45,6 +87,8 @@ extinct_animals = {
 # 1. Iterate through extinct_animals hash, printing each key/value pair
 # with a dash in between the key and value, and an asterisk between each pair.
 # ----
+
+extinct_animals.each { |animal, year| print "#{animal}-#{year}*" }
 
 # 2. Keep only animals in extinct_animals if they were extinct before
 # the year 2000. Do not use any special built-in methods.
