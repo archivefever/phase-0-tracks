@@ -73,7 +73,7 @@ def spy_interface
     last_code_name = name.downcase.split(' ')[0].split('')
 
     # Method evaluates to capitalized string names
-    encoder(first_code_name).capitalize + " " + encoder(last_code_name).  capitalize
+    encoder(first_code_name).capitalize + " " + encoder(last_code_name).capitalize
   end
 
   # DRIVER CODE
