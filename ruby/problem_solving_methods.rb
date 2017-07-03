@@ -1,3 +1,44 @@
+# Release 0
+
+test = [2, 4, 6, 8, 10, 12]
+
+def search_array(ary, target)
+  i = 0
+  match = nil
+  ary.each do |x|
+    if x == target
+      match = i
+    else
+      i += 1
+    end
+  end
+  p match
+end
+
+p test.length
+search_array(test, 12)
+search_array(test, 23)
+
+def search_array2(ary, target)
+  i = 0
+  match = nil
+  ary.each do |x|
+    case
+    when x == target then match = i
+    else i += 1
+    end
+  end
+  p match
+end
+
+p test.length
+search_array2(test, 10)
+search_array2(test, 23)
+
+
+
+# Release 1
+
 def fib(n)
 
   fib_array = []
