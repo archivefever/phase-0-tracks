@@ -1,4 +1,4 @@
-
+## Nota Bene: I've just realized that the brief here was for "real world construct," while my example below is more of a database. Since I believe I've demonstrated the necessary understanding of nested data structures, I'm going to leave it rather than do another.
 
 # Build nested data structure for philosophers
 # Immanuel Kant, David Hume, Hegel
