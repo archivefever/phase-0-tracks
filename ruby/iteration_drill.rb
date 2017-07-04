@@ -14,11 +14,24 @@ zombie_apocalypse_supplies.each { |supply| print supply + "*"}
 # in alphabetical order. Do not use any special built-in methods.
 # ----
 
-zombie_apocalypse_supplies.each do |supply|
 
-if zombie_apocalypse_supplies[supply]
+def alpha_sort(ary)
+  change_made = true
 
+  while change_made
+    change_made = false
+    ary[0...-1].each_with_index do |supply, index|
+
+      if supply > ary[index+1]
+        ary[index], ary[index+1] = ary[index+1], ary[index]
+        change_made = true
+      end
+    end
+  end
+  ary
 end
+
+p alpha_sort(zombie_apocalypse_supplies)
 
 
 
@@ -93,12 +106,26 @@ extinct_animals.each { |animal, year| print "#{animal}-#{year}*" }
 # 2. Keep only animals in extinct_animals if they were extinct before
 # the year 2000. Do not use any special built-in methods.
 # ----
+extinct_animals.each do |animal, year|
+  if year >= 2000
+    extinct_animals.delete(animal)
+  end
+end
+
+p extinct_animals
 
 # 3. Our calculations were completely off, turns out all of those animals went
 # extinct 3 years before the date provided. Update the values in extinct_animals
 # so they accurately reflect what year the animal went extinct.
 # Do not use any special built-in methods.
 # ----
+
+extinct_animals.each do |animal, year|
+  extinct_animals.store(animal, year - 3)
+end
+
+p extinct_animals
+
 
 # 4. You've heard that the following animals might be extinct, but you're not sure.
 # Check if they're included in extinct_animals, one by one:
@@ -107,9 +134,38 @@ extinct_animals.each { |animal, year| print "#{animal}-#{year}*" }
 # "Saiga Antelope"
 # Do not use any special built-in methods.
 # ----
+def check_if_extinct(queried_animal)
+
+    extinct_animals = {
+    "Tasmanian Tiger" => 1936,
+    "Eastern Hare Wallaby" => 1890,
+    "Dodo" => 1662,
+    "Pyrenean Ibex" => 2000,
+    "Passenger Pigeon" => 1914,
+    "West African Black Rhinoceros" => 2011,
+    "Laysan Crake" => 1923
+  }
+  condition = false
+
+  extinct_animals.each_key do |animal|
+    if animal == queried_animal
+      condition = true
+    end
+  end
+  p condition
+end
+
+check_if_extinct("Andean Cat")
+check_if_extinct("Dodo")
+check_if_extinct("Saiga Antelope")
+
 
 # 5. We just found out that the Passenger Pigeon is actually not extinct!
 # Remove them from extinct_animals and return the key value pair as a two item array.
 # Find the built-in method that helps you accomplish this in the Ruby documentation
 # for Hashes.
 # ----
+p extinct_animals.assoc("Passenger Pigeon")
+extinct_animals.delete("Passenger Pigeon")
+
+p extinct_animals
