@@ -76,38 +76,45 @@ end
 
 Release 2
 
-# Pseudocode bubble sorting alogrithm
+# Release 2
+# Sorting algorithm: bubble method
+# The bubble method iterates through an array of
+# integers and compares each set of two in order
+# It simply switches the two values based on value
+# and relies on a loop that ends once all values
+# match the value order.
 
 
+# The array works through pairs, which we can
+# pull using a loop, and then we'll
+# compare the two values using a simple lesser-than
+# operator.
+
+# The algorithm will finish naturally as long
+# as the sole 'if' statement
 
 =end
 
+def sorter(arr)
+
+return arr if arr.length <= 1
+
+not_sorted = true
+
+    while not_sorted
+     not_sorted = false
+     (arr.length-1).times do |i|
+        if arr[i] > arr[i+1]
+          arr[i], arr[i+1] = arr[i+1], arr[i]
+          not_sorted = true
+          p arr
+          p "swap occurred"
+        end
+       end
+     end
+    arr
+end
+
 test = [1, 2, 3, 4, 5, 6, 7, 8]
 shuffle_test = test.shuffle
-def sorter(ary, control)
-  i = 0
-
-  until ary == control do
-
-    if ary[i + 1] == nil
-      p "starting over"
-      i = 0
-
-    elsif ary[i] > ary[i + 1]
-      p "Swap occurred"
-      ary[i], ary[i + 1] = ary[i + 1], ary[i]
-      p ary
-      i += 1
-
-    else
-      p "Swap did not occur"
-      p ary
-      i += 1
-    end
-
-  end
-
-end
-p shuffle_test
-p "^ Shuffled"
-p sorter(shuffle_test, test)
+p sorter(shuffle_test)
