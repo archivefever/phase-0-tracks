@@ -15,20 +15,43 @@ zombie_apocalypse_supplies.each { |supply| print supply + "*"}
 # ----
 
 
+=begin I understand my solution fails to preserve the capitalization of 'CB radio.'' I thought I should use a temporary variable and was attempting the following but it would only enter an infinite loop:
+
 def alpha_sort(ary)
   change_made = true
 
   while change_made
     change_made = false
-    ary[0...-1].each_with_index do |supply, index|
+   sorted_array = ary[0...-1].each_with_index do |supply, index|
 
+      # working with a temporary variable to ignore the case
+      temp_supply = supply.downcase
+
+      if temp_supply > ary[index+1]
+        ary[index], ary[index+1] = ary[index+1], ary[index]
+        change_made = true
+      end
+    end
+  end
+  sorted_array
+end
+
+=end
+
+def alpha_sort(ary)
+  change_made = true
+
+  while change_made
+    change_made = false
+   sorted_array = ary[0...-1].each_with_index do |supply, index|
+      supply.downcase!
       if supply > ary[index+1]
         ary[index], ary[index+1] = ary[index+1], ary[index]
         change_made = true
       end
     end
   end
-  ary
+  sorted_array
 end
 
 p alpha_sort(zombie_apocalypse_supplies)
