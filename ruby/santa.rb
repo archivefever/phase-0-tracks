@@ -16,6 +16,27 @@ class Santa
     puts "That was a good type of #{cookie_type}!"
   end
 
+  def celebrate_birthday
+    @age += 1
+  end
+
+  def get_mad_at(reindeer_name)
+    @reindeer_ranking.delete(reindeer_name)
+    @reindeer_ranking.insert(-1, reindeer_name)
+  end
+
+  def gender=(new_gender)
+    @gender = new_gender
+  end
+
+  def age
+    @age
+  end
+
+  def ethnicity
+    @ethnicity
+  end
+
 end
 
 latina_santas = []
@@ -29,7 +50,16 @@ end
 
 p latina_santas
 
+clint = Santa.new("male", "white")
 
+clint.celebrate_birthday
+p clint
 
+clint.get_mad_at("Vixen")
+p clint
 
+clint.gender = "gender fluid"
+p clint
 
+p clint.age
+p clint.ethnicity
