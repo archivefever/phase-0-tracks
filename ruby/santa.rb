@@ -1,7 +1,7 @@
 class Santa
 
-  attr_reader :age, :ethnicity
-  attr_accessor :gender
+  attr_reader :ethnicity
+  attr_accessor :gender, :age
 
   def initialize (gender, ethnicity)
     puts "Initializing Santa instance..."
@@ -54,3 +54,23 @@ p clint
 
 p clint.age
 p clint.ethnicity
+
+many_santas = []
+diverse_santas = []
+
+# one method
+10.times {many_santas << Santa.new("male", "white")}
+
+p many_santas
+
+# another method of doing this
+diverse_santas = Array.new(500){ Santa.new(example_genders.sample, example_ethnicities.sample) }
+p diverse_santas.size
+
+p diverse_santas
+
+diverse_santas.each do |santa|
+  santa.age = rand(141)
+end
+
+p diverse_santas
