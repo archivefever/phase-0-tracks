@@ -18,6 +18,18 @@ class Santa
 
 end
 
-saint_nick = Santa.new
-saint_nick.speak
-saint_nick.eat_milk_and_cookies("oatmeal")
+latina_santas = []
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+latina_santa_names = ["Sofia", "Isabella", "Valentina"]
+
+latina_santa_names.each do |reindeer|
+  latina_santas << Santa.new("female", "Latina")
+end
+
+p latina_santas
+
+
+
+
+
