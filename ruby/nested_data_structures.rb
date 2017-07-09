@@ -1,60 +1,61 @@
-## Nota Bene: I've just realized that the brief here was for "real world construct," while my example below is more of a database. Since I believe I've demonstrated the necessary understanding of nested data structures, I'm going to leave it rather than do another.
+# Nested data structure of hypothetical airport
 
-# Build nested data structure for philosophers
-# Immanuel Kant, David Hume, Hegel
+kitchen = {
 
-philosophers = {
-
-  hume: {
-    pretty_name: 'David Hume',
-    bio_info: {
-      birth_year: 1711,
-      nationality: 'Scottish'
+  terminal_a: {
+    pretty_name: 'Terminal A',
+    facilities: {
+      number_of_bathrooms: 6,
+      smoking_lounge: false
     },
-    notable_works: [
-      'An Enquiry Concerning Human Understanding',
-      'An Enquiry Concerning the Principles of Morals'
+    airlines: [
+      'El Al',
+      'Alitalia'
       ],
-    influences: [
-      'Immanuel Kant',
-      'Adam Smith',
-      'John Stuart Mill'
+    restaurants: [
+      'Cafe Intermezzo',
+      'Chick-fil-A',
+      'Sushi Maki'
     ]
   },
 
-  kant: {
-    pretty_name: 'Immanuel Kant',
-    bio_info: {
-      birth_year: 1724,
-      nationality: 'Prussian'
+  terminal_b: {
+    pretty_name: 'Terminal B',
+    facilities: {
+      number_of_bathrooms: 8,
+      smoking_lounge: true
     },
-    notable_works: [
-      'Critique of Pure Reason',
-      'Critique of Practical Reason',
-      'Metaphysics of Morals',
-      'Critique of Judgment'],
-    influences: [
-      'Aristotle',
-      'Rene Decartes',
-      'Plato',
-      'David Hume']
+    airlines: [
+      'United',
+      'Alaska Airlines'
+      ],
+    restaurants: [
+      'Five Guys',
+      'Potbelly',
+      'Starbucks'
+    ]
   },
 
-  hegel: {
-    pretty_name: 'Georg Wilhelm Friedrich Hegel',
-    bio_info: {
-      birth_year: 1770,
-      nationality: 'Prussian'
+  terminal_c: {
+    pretty_name: 'Terminal C',
+    facilities: {
+      number_of_bathrooms: 5,
+      smoking_lounge: true
     },
-    notable_works: [
-      'Phenomenology of Spirit',
-      'Science of Logic',
-      'Elements of the Philosophy of Right'
+    airlines: [
+      'American',
+      'Jet Blue'
+      ],
+    restaurants: [
+      'Burger King',
+      'Cinnabon'
     ]
   }
 
 }
-=
-puts philosophers[:kant][:bio_info][:nationality]
-puts philosophers[:hegel][:notable_works][2]
-puts philosophers[:hume][:pretty_name]
+
+puts kitchen[:terminal_a][:facilities][:smoking_lounge]
+puts kitchen[:terminal_b][:airlines]
+puts kitchen[:terminal_b][:facilities][:number_of_bathrooms]
+puts kitchen[:terminal_c][:pretty_name]
+puts kitchen[:terminal_c][:airlines][0]
