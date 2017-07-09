@@ -51,20 +51,20 @@ def spy_interface
       split_name.map! do |character|
         if vowels.include?(character)
           if character == "u"
-            result += "a"
+            character = "a"
           else
-            result += vowels[vowels.index(character) + 1]
+            character = vowels[vowels.index(character) + 1]
           end
         else
           if character == "z"
-            result += "b"
+            character = "b"
           else
-            result += consonants[consonants.index(character) + 1]
+            character = consonants[consonants.index(character) + 1]
           end
         end
       end
       # method will evaluate as encoded string
-      result
+      split_name.join("")
     end
 
     # Split name into two arrays of individual lower-case characters
@@ -81,8 +81,8 @@ def spy_interface
   # Initiliaze variables for prompt, spy input, and empty arrays
   prompt = ">"
   spy_input = ""
-  true_name_array = []
-  spy_name_array = []
+
+  enigma_list = {}
 
   # Ask user for names to be encoded
   puts "Please enter names to be encoded (type 'quit' when finished):"
@@ -94,19 +94,17 @@ def spy_interface
       if spy_input != "quit"
         # Disregard input of enter only
         if !spy_input.empty?
-          # Store user input and new alias in separate arrays
-          true_name_array << spy_input
-          spy_name_array << alias_generator(spy_input)
+          # Store user input and new alias in hash
+          enigma_list.store(spy_input, alias_generator(spy_input))
         end
       end
   end
 
-  # Zip arrays together
-  # Iterate through the joined array printing true name and spy name together
-  # This data could also be put into a hash but this works just as well -- i wonder if one is preferable?
-  true_name_array.zip(spy_name_array).each { |true_name, spy_name| puts "#{true_name} is also known as #{spy_name}." }
+  # Iterate through the hash printing true name and spy name together
+
+  enigma_list.each { |true_name, spy_name| puts "#{true_name} is also known as #{spy_name}." }
 
 end
 
-spy_interface
 
+spy_interface
