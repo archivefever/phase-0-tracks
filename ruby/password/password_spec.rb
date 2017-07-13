@@ -11,6 +11,7 @@ describe PassWord do
     expect(game.set_board).to eq "_ _ _ _ _ _ _ _ _ _ _"
   end
 
+
   it "checks to see if target word contains letter" do
     game.target_word = "mississippi"
     expect(game.check_letter('q')).to eq false

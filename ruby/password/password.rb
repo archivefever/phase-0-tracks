@@ -1,5 +1,26 @@
-# CLINT THACKER
-# CHI Nighthawks
+=begin
+CLINT THACKER
+CHI Nighthawks
+
+Password Game Pseudocode
+
+Define class PassWord
+
+Write an initialize method that sets target word, current board, guesses available, guess count, list of guesses, and game victory variables to defaults.
+
+Use attr_reader and attr_accessor keywords to make the appropriate variables readable and/or writable.
+
+Write a method that converts the target word to an array and maps over the array creating a board of blanks or underscores corresponding to the number of characters in the target word. The resulting array will need to be reconverted into a string.
+
+Write a method that checks the user's guess against the target word and stores that guess in an array.
+  IF the target word includes the guess, return true.
+  ELSE return false, and subtract 1 from the guesses available.
+
+Write a method that changes the board with a correct guess by iterating through the target word character array and returning the indices of any matching characters. At each index number of the board, the blank will then be changed to the letter guess.
+  IF the current board matches the completed target word, the game victory variable will be set to true.
+In any case, the method should return the value of the current board.
+
+=end
 
 class PassWord
 
@@ -65,7 +86,6 @@ puts "You can only miss #{game.guesses_available} guesses."
 puts "Good luck!"
 puts
 
-
 until game.guess_count == game.guesses_available
   puts separator
   puts "Board:"
@@ -81,9 +101,7 @@ until game.guess_count == game.guesses_available
     puts
   else
     if game.check_letter(letter_guess)
-
       game.change_board(letter_guess)
-
       if game.game_victory then break end
       puts "Correct!"
       puts "You still have #{game.guesses_available} guesses left."
