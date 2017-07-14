@@ -2,15 +2,16 @@
 # input: string of items separated by spaces (example: "carrots apples cereal pizza")
 # steps:
   # Use .split(' ') the string into an array
-  # Iterate over the array and store its values as keys in a new hash with all pairings set a default ("not give", nil)
-  # Set default quantity
+  # Declare empty hash
+  # Iterate over the array and store its values as keys in the new hash with all values set a default ("unknown", nil)
+  # Set default quantity using with quantity = "unknown"/nil
   # Print the list to the console
   # Output the has to console so that method evaluates to the hash
 # output: hash of item key values with quantity
 
 # Method to add an item to a list
 # input: list, item name, and optional quantity
-# steps: Create that takes a list (hash) and use .store to put (item name, optional quantity) into the hash
+# steps: Create a method that takes a list (hash), an item, and an optional quantity and stores them as a key/value pair in the list(hash)
 # output: the new hash with the added item
 
 # Method to remove an item from the list
