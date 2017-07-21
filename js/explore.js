@@ -1,4 +1,4 @@
-// Reverse Algorithm
+// Reverse
 // reverse("hello") => "olleh"
 // Declare an empty string variable
 // Set a counter to (word length - 1)
@@ -7,4 +7,11 @@
 // Subtract one from the counter
 // Return the new string
 
+function reverse(str) {
+var backWord = "";
 
+for (var i = str.length-1; i >= 0 ; i-=1) {
+  backWord += str[i];
+}
+  return backWord;
+}
