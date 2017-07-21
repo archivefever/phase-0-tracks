@@ -15,3 +15,5 @@ for (var i = str.length-1; i >= 0 ; i-=1) {
 }
   return backWord;
 }
+
+console.log(reverse("hello"));
