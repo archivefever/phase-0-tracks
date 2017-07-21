@@ -17,3 +17,12 @@ for (var i = str.length-1; i >= 0 ; i-=1) {
 }
 
 console.log(reverse("hello"));
+
+myName = reverse("clint");
+iAmcool = true;
+
+if (iAmcool) {
+  console.log(myName);
+} else {
+  console.log("Sad!");
+}
