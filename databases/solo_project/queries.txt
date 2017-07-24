@@ -1,0 +1,70 @@
+8.3 Solo Challenge
+SQL Queries
+
+1.
+sqlite> SELECT * FROM recipes;
+1|Coffee Cake|1|true
+2|Lemon Luxury Layer Cake|1|false
+3|Cherry Clafoutis|2|false
+4|Coffee Cake|3|false
+5|French Apple Cake|3|false
+6|Flourless Chocolate Cake|4|true
+
+sqlite> SELECT * FROM authors;
+1|Rose Levy Beranbaum
+2|Julia Child
+3|David Lebovitz
+4|Martha Stewart
+
+——
+2.
+sqlite> UPDATE recipes SET gluten_free="false" WHERE recipe_name="Flourless Chocolate Cake";
+sqlite> SELECT * FROM recipes;
+
+1|Coffee Cake|1|true
+2|Lemon Luxury Layer Cake|1|false
+3|Cherry Clafoutis|2|false
+4|Coffee Cake|3|false
+5|French Apple Cake|3|false
+6|Flourless Chocolate Cake|4|false
+sqlite> 
+
+
+—
+3.
+sqlite> SELECT * from recipes, authors WHERE recipes.author_id = authors.id;
+1|Coffee Cake|1|true|1|Rose Levy Beranbaum
+2|Lemon Luxury Layer Cake|1|false|1|Rose Levy Beranbaum
+3|Cherry Clafoutis|2|false|2|Julia Child
+4|Coffee Cake|3|false|3|David Lebovitz
+5|French Apple Cake|3|false|3|David Lebovitz
+6|Flourless Chocolate Cake|4|false|4|Martha Stewart
+sqlite> 
+
+
+—
+4.
+sqlite> SELECT recipes.recipe_name, authors.name, recipes.gluten_free FROM recipes JOIN authors ON recipes.author_id = authors.id;
+
+Coffee Cake|Rose Levy Beranbaum|true
+Lemon Luxury Layer Cake|Rose Levy Beranbaum|false
+Cherry Clafoutis|Julia Child|false
+Coffee Cake|David Lebovitz|false
+French Apple Cake|David Lebovitz|false
+Flourless Chocolate Cake|Martha Stewart|true
+
+
+—
+
+5.
+sqlite> DELETE FROM recipes
+   ...> WHERE recipe_name="Coffee Cake”;
+
+sqlite> SELECT * FROM recipes;
+2|Lemon Luxury Layer Cake|1|false
+3|Cherry Clafoutis|2|false
+5|French Apple Cake|3|false
+6|Flourless Chocolate Cake|4|false
+sqlite> 
+
+
