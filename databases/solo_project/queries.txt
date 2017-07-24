@@ -67,4 +67,104 @@ sqlite> SELECT * FROM recipes;
 6|Flourless Chocolate Cake|4|false
 sqlite> 
 
+—
 
+CROSS JOIN
+
+
+sqlite> sqlite> SELECT * FROM recipes CROSS JOIN authors;
+
+2|Lemon Luxury Layer Cake|1|false
+2|Lemon Luxury Layer Cake|1|false
+2|Lemon Luxury Layer Cake|1|false
+2|Lemon Luxury Layer Cake|1|false
+3|Cherry Clafoutis|2|false
+3|Cherry Clafoutis|2|false
+3|Cherry Clafoutis|2|false
+3|Cherry Clafoutis|2|false
+5|French Apple Cake|3|false
+5|French Apple Cake|3|false
+5|French Apple Cake|3|false
+5|French Apple Cake|3|false
+6|Flourless Chocolate Cake|4|false
+6|Flourless Chocolate Cake|4|false
+6|Flourless Chocolate Cake|4|false
+6|Flourless Chocolate Cake|4|false
+7|Coffee Cake|1|true
+7|Coffee Cake|1|true
+7|Coffee Cake|1|true
+7|Coffee Cake|1|true
+8|Coffee Cake|3|false
+8|Coffee Cake|3|false
+8|Coffee Cake|3|false
+8|Coffee Cake|3|false
+—
+
+I altered my table for the remaining joins like so: 
+
+sqlite> ALTER TABLE authors ADD COLUMN gluten_free BOOLEAN;
+
+sqlite> .schema
+
+CREATE TABLE recipes (
+id INTEGER PRIMARY KEY,
+recipe_name VARCHAR(255),
+author_id INT,
+gluten_free BOOLEAN,
+FOREIGN KEY (author_id) REFERENCES authors(id)
+);
+CREATE TABLE authors (
+id INTEGER PRIMARY KEY,
+name VARCHAR(255)
+, gluten_free BOOLEAN);
+
+sqlite> UPDATE authors SET gluten_free="true" WHERE name="David Lebovitz";
+sqlite> UPDATE authors SET gluten_free="true" WHERE name="Martha Stewart";
+sqlite> UPDATE authors SET gluten_free="false" WHERE name="Rose Levy Beranbaum";
+sqlite> UPDATE authors SET gluten_free="false" WHERE name="Julia Child";
+sqlite> SELECT * FROM authors;
+
+1|Rose Levy Beranbaum|false
+2|Julia Child|false
+3|David Lebovitz|true
+4|Martha Stewart|true
+sqlite> 
+
+—
+
+LEFT JOIN
+
+sqlite> SELECT recipes.recipe_name, authors.name FROM recipes LEFT JOIN authors ON recipes.gluten_free=authors.gluten_free;
+
+Lemon Luxury Layer Cake|Julia Child
+Lemon Luxury Layer Cake|Rose Levy Beranbaum
+Cherry Clafoutis|Julia Child
+Cherry Clafoutis|Rose Levy Beranbaum
+French Apple Cake|Julia Child
+French Apple Cake|Rose Levy Beranbaum
+Flourless Chocolate Cake|Julia Child
+Flourless Chocolate Cake|Rose Levy Beranbaum
+Coffee Cake|David Lebovitz
+Coffee Cake|Martha Stewart
+Coffee Cake|Julia Child
+Coffee Cake|Rose Levy Beranbaum
+sqlite> 
+
+—
+INNER JOIN
+
+sqlite> SELECT recipes.recipe_name, authors.name FROM recipes INNER JOIN authors ON recipes.gluten_free=authors.gluten_free;
+
+Lemon Luxury Layer Cake|Julia Child
+Lemon Luxury Layer Cake|Rose Levy Beranbaum
+Cherry Clafoutis|Julia Child
+Cherry Clafoutis|Rose Levy Beranbaum
+French Apple Cake|Julia Child
+French Apple Cake|Rose Levy Beranbaum
+Flourless Chocolate Cake|Julia Child
+Flourless Chocolate Cake|Rose Levy Beranbaum
+Coffee Cake|David Lebovitz
+Coffee Cake|Martha Stewart
+Coffee Cake|Julia Child
+Coffee Cake|Rose Levy Beranbaum
+sqlite> 
