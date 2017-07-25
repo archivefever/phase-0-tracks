@@ -20,7 +20,6 @@ sqlite> SELECT * FROM authors;
 2.
 sqlite> UPDATE recipes SET gluten_free="false" WHERE recipe_name="Flourless Chocolate Cake";
 sqlite> SELECT * FROM recipes;
-
 1|Coffee Cake|1|true
 2|Lemon Luxury Layer Cake|1|false
 3|Cherry Clafoutis|2|false
@@ -45,7 +44,6 @@ sqlite>
 —
 4.
 sqlite> SELECT recipes.recipe_name, authors.name, recipes.gluten_free FROM recipes JOIN authors ON recipes.author_id = authors.id;
-
 Coffee Cake|Rose Levy Beranbaum|true
 Lemon Luxury Layer Cake|Rose Levy Beranbaum|false
 Cherry Clafoutis|Julia Child|false
@@ -59,7 +57,6 @@ Flourless Chocolate Cake|Martha Stewart|true
 5.
 sqlite> DELETE FROM recipes
    ...> WHERE recipe_name="Coffee Cake”;
-
 sqlite> SELECT * FROM recipes;
 2|Lemon Luxury Layer Cake|1|false
 3|Cherry Clafoutis|2|false
@@ -68,38 +65,6 @@ sqlite> SELECT * FROM recipes;
 sqlite> 
 
 —
-
-CROSS JOIN
-
-
-sqlite> sqlite> SELECT * FROM recipes CROSS JOIN authors;
-
-2|Lemon Luxury Layer Cake|1|false
-2|Lemon Luxury Layer Cake|1|false
-2|Lemon Luxury Layer Cake|1|false
-2|Lemon Luxury Layer Cake|1|false
-3|Cherry Clafoutis|2|false
-3|Cherry Clafoutis|2|false
-3|Cherry Clafoutis|2|false
-3|Cherry Clafoutis|2|false
-5|French Apple Cake|3|false
-5|French Apple Cake|3|false
-5|French Apple Cake|3|false
-5|French Apple Cake|3|false
-6|Flourless Chocolate Cake|4|false
-6|Flourless Chocolate Cake|4|false
-6|Flourless Chocolate Cake|4|false
-6|Flourless Chocolate Cake|4|false
-7|Coffee Cake|1|true
-7|Coffee Cake|1|true
-7|Coffee Cake|1|true
-7|Coffee Cake|1|true
-8|Coffee Cake|3|false
-8|Coffee Cake|3|false
-8|Coffee Cake|3|false
-8|Coffee Cake|3|false
-—
-
 I altered my table for the remaining joins like so: 
 
 sqlite> ALTER TABLE authors ADD COLUMN gluten_free BOOLEAN;
@@ -129,6 +94,39 @@ sqlite> SELECT * FROM authors;
 3|David Lebovitz|true
 4|Martha Stewart|true
 sqlite> 
+
+
+—
+CROSS JOIN
+
+
+sqlite> SELECT * FROM recipes CROSS JOIN authors;
+2|Lemon Luxury Layer Cake|1|false|1|Rose Levy Beranbaum|false
+2|Lemon Luxury Layer Cake|1|false|2|Julia Child|false
+2|Lemon Luxury Layer Cake|1|false|3|David Lebovitz|true
+2|Lemon Luxury Layer Cake|1|false|4|Martha Stewart|true
+3|Cherry Clafoutis|2|false|1|Rose Levy Beranbaum|false
+3|Cherry Clafoutis|2|false|2|Julia Child|false
+3|Cherry Clafoutis|2|false|3|David Lebovitz|true
+3|Cherry Clafoutis|2|false|4|Martha Stewart|true
+5|French Apple Cake|3|false|1|Rose Levy Beranbaum|false
+5|French Apple Cake|3|false|2|Julia Child|false
+5|French Apple Cake|3|false|3|David Lebovitz|true
+5|French Apple Cake|3|false|4|Martha Stewart|true
+6|Flourless Chocolate Cake|4|false|1|Rose Levy Beranbaum|false
+6|Flourless Chocolate Cake|4|false|2|Julia Child|false
+6|Flourless Chocolate Cake|4|false|3|David Lebovitz|true
+6|Flourless Chocolate Cake|4|false|4|Martha Stewart|true
+7|Coffee Cake|1|true|1|Rose Levy Beranbaum|false
+7|Coffee Cake|1|true|2|Julia Child|false
+7|Coffee Cake|1|true|3|David Lebovitz|true
+7|Coffee Cake|1|true|4|Martha Stewart|true
+8|Coffee Cake|3|false|1|Rose Levy Beranbaum|false
+8|Coffee Cake|3|false|2|Julia Child|false
+8|Coffee Cake|3|false|3|David Lebovitz|true
+8|Coffee Cake|3|false|4|Martha Stewart|true
+sqlite> 
+—
 
 —
 
