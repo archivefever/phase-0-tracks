@@ -7,7 +7,7 @@ CHI Nighhawks
 
 This application is a somewhat primitive scrabble study tool which finds anagrams of words that match dictionary entries. It stores the searched anagrams for future study.
 
-Nota Bene: I decided not to attempt classes, although classes and modules would clearly be helpful. I wanted to be certain I could write the methods correctly and manipulate the databases before complicating matters further.
+Nota Bene: I decided not to attempt classes, although classes and modules would clearly be helpful. I wanted to be certain I could write the methods correctly and manipulate the databases before complicating matters further. I'm continuing to work on this with full knowledge that there is much refactoring to be done.
 
 It begins with a SQLite dictionary of english words and definitions, stored in a table called 'entries.'
 
@@ -323,7 +323,9 @@ until finished
       puts
 
       if user_answer == "y" || user_answer == "yes"
-        display_definition(lookup(user_letters))
+        retrieve_anagrams(user_letters).each do |entry|
+          display_definition(lookup(entry))
+        end
         valid_input = true
       elsif user_answer == "n" || user_answer == "no"
         puts "Obviously you are a lexical wizard."
