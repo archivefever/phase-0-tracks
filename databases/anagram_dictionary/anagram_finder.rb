@@ -242,9 +242,21 @@ def display_stats
   puts "Your library contains #{wordbank_word_array.length} searched strings."
   puts "#{give_percent(wordbank_in_dictionary, wordbank_word_array.length)} percent of your searched strings were found in the dictionary."
   puts "#{give_percent(wordbank_with_multiple_anagrams, wordbank_word_array.length)} percent of your searched strings had multiple anagrams."
-
 end
 
+def display_library
+  wordbank_library = $dictionary.execute("SELECT * FROM wordbank")
+
+  wordbank_library.each do |entry|
+    puts "----------------"
+    puts entry['word']
+    puts "Multiple anagrams: #{entry['multiple_anagrams_found']}"
+    puts "Last searched: #{entry['sqltime']}"
+    puts "----------------"
+
+  end
+
+end
 
 # DRIVER CODE
 
@@ -319,9 +331,6 @@ until finished
   end
 
   puts
-  display_stats
-
-  puts
 
   valid_input2 = false
   until valid_input2
@@ -338,8 +347,28 @@ until finished
     end
   end
 puts
-
 end
+
+puts
+display_stats
+
+valid_input3 = false
+until valid_input3
+  puts
+  puts "Would you like to view your search history? (y/n)"
+  print prompt
+    user_input = gets.chomp
+      if user_input == "y" || user_input == "yes"
+        display_library
+        valid_input3 = true
+      elsif user_input == "n" || user_input == "no"
+        finished = true
+        valid_input3 = true
+      else
+        puts "Please enter y or n..."
+      end
+end
+
 
 puts
 puts "Thanks for using the Anagram Finder!"
