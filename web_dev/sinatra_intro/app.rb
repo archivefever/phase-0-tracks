@@ -57,3 +57,7 @@ get '/great_job' do
     "Good job!"
   end
 end
+
+get '/:first_number/:second_number' do
+  (params[:first_number].to_i + params[:second_number].to_i).to_s
+end
