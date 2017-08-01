@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JQuery Test Page</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+  <script>
+    $(document).ready(function() {
+      $("button").click(function() {
+        $("img").hide();
+        });
+      $("img").mouseenter(function(){
+      alert("RED COOP! RED COOP!");
+        });
+      });
+  </script>
+</head>
+<body>
+<div>
+  <p>Here is some text.</p>
+  <button>BUTTON</button>
+  <p>Here is a photo.</p>
+  <img src="images/redcoop.jpg">
+
+</div>
+
+
+</body>
+</html>
