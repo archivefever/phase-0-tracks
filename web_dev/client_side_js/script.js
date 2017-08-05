@@ -1,8 +1,15 @@
+console.log("The script is running!");
 
-var coop = document.getElementById('images/redcoop.jpg');
+function hideImage() {
 
-var body_text = document.getElementsByTag("div");
+  var bookimg = document.getElementById("bookimg");
 
-function AddBlueBorder()
+  if (bookimg.style.visibility === "hidden") {
+    bookimg.style.visibility = "visible";
+  } else {
+    bookimg.style.visibility = "hidden";
+  }
+}
 
-end
+var img = document.getElementById("myBtn");
+img.addEventListener("click", hideImage);
