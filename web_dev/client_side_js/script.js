@@ -1,4 +1,8 @@
 
-var coop = document.getElementById('images/redcoop.jpg')
+var coop = document.getElementById('images/redcoop.jpg');
 
-function
+var body_text = document.getElementsByTag("div");
+
+function AddBlueBorder()
+
+end
